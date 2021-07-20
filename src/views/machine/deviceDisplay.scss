@@ -1,0 +1,190 @@
+.deviceDisplay {
+    width: 100%;
+    height: 100%;
+
+    .add-page-select {
+        margin: 0 20px;
+    }
+    .resizable-box {
+        width: 100%;
+        height: calc(100% - 50px);
+        margin-top: 10px;
+        position: relative;
+        overflow: auto;
+        background-color: #fff;
+        border: 1px solid #ccc;
+
+        .dragBox {
+            transform-origin: 0 0;
+        }
+        .rotateImg {
+            width: 100%;
+            height: 100%;
+        }
+        .stationState {
+            width: auto;
+            height: 72px;
+            position: fixed;
+            right: 40px;
+            top: 168px;
+            padding: 0 10px;
+            font-size: 14px;
+            background-color: rgba(255, 232, 0, 0.8);
+            z-index: 999;
+
+            .error {
+                color: red;
+            }
+        }
+        .FieldItem {
+            font-size: 14px;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            white-space: nowrap;
+
+            .label {
+                color: #333;
+            }
+            .value {
+                margin-left: 5px;
+                color: #5094ff;
+            }
+            .danger {
+                color: red;
+
+                &:after {
+                    content: "(超)";
+                    color: red;
+                }
+            }
+        }
+        .closeIcon {
+            position: absolute;
+            top: -50px;
+            right: -16px;
+            cursor: pointer;
+            font-size: 28px;
+            color: rgb(136, 136, 136);
+            font-weight: bold;
+        }
+
+        // 当前拖拽元素黑色边框
+        .input-center {
+            text-align: center;
+            line-height: 80px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .resizable-text {
+            input::-webkit-input-placeholder {
+                color: #fff;
+                text-align: center;
+                // font-size: 14px;
+            }
+        }
+        .handle {
+            border: none !important;
+        }
+        input {
+            // width: 100px !important;
+            width: 100%;
+            height: 100%;
+            border: none !important;
+            outline: none;
+            font-size: 16px;
+            color: #333;
+            background: none;
+            text-align: left;
+            resize: none;
+        }
+        input:focus {
+            outline: none;
+            border: none;
+        }
+        input::-webkit-input-placeholder {
+            color: #999;
+            // font-size: 14px;
+        }
+        .areaBox {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            overflow: hidden;
+            background-color: #5094ff;
+            color: #fff;
+            font-size: 16px;
+            white-space: nowrap;
+        }
+        .circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: cc 0.5s ease-in-out infinite;
+            background-color: #5094ff;
+        }
+        @keyframes cc {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    }
+    .fullBox {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 100;
+        margin-top: 0;
+
+        .exitBtn {
+            position: fixed;
+            right: 10px;
+            top: 10px;
+            right: 3vw;
+            top: 1vw;
+            z-index: 2;
+        }
+        .stationState{
+            top: 60px !important;
+        }
+    }
+    .deviceInfo {
+        form {
+            width: 100%;
+            float: left;
+
+            .el-form-item {
+                float: left;
+                width: 50%;
+
+                .el-date-editor.el-input {
+                    width: 100%;
+                }
+            }
+            ::v-deep .must .el-form-item__label:before {
+                content: "*";
+                display: inline-block;
+                color: red;
+            }
+            .bottom {
+                float: left;
+                width: 100%;
+                padding-top: 22px;
+                border-top: 1px solid #ccc;
+            }
+            .noImg {
+                border: none;
+            }
+        }
+    }
+}

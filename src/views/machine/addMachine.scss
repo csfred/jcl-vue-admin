@@ -1,0 +1,221 @@
+.add-machine-container {
+    height: 100%;
+    background-color: #fff;
+    padding: 10px 10px 10px 22px;
+
+    .gutter,
+    .fh {
+        height: 100%;
+    }
+    .colLeft {
+        border: 1px solid #ccc;
+        padding-left: 4% !important;
+    }
+    // 拖拽input文本
+    .left-box {
+        width: 100%;
+        height: 100%;
+        float: left;
+        text-align: left;
+        position: relative;
+
+        .title {
+            width: 100%;
+            height: 70px;
+            line-height: 70px;
+            color: #333;
+            font-size: 20px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .list-box {
+            height: calc(100% - 70px);
+            overflow-x: hidden;
+            box-sizing: border-box;
+
+            .item {
+                white-space: nowrap;
+                height: 30px;
+                line-height: 30px;
+                color: #333;
+                box-sizing: border-box;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                cursor: pointer;
+
+                img{
+                    width: 20px;
+                    height: 20px;
+                    vertical-align: middle;
+                }
+                .circle{
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    vertical-align: middle;
+                    border-radius: 50%;
+                    border: 1px solid #666666;
+                }
+            }
+        }
+        // }
+    }
+    .right-box {
+        width: 100%;
+        height: calc(100% - 50px);
+        // 头部
+        .header-box {
+            margin-bottom: 10px;
+            white-space: nowrap;
+            // 新建页面
+            .add-page-select {
+                margin: 0 20px;
+            }
+        }
+
+        // 拖拽元素显示盒子
+        .resizable-box {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ccc;
+            position: relative;
+            overflow: auto;
+
+            .dragBox{
+                display: inline-block;
+                position: relative;
+            }
+            .rotateImg {
+                width: 100%;
+                height: 100%;
+            }
+            .closeIcon {
+                position: absolute;
+                top: -50px;
+                right: -16px;
+                cursor: pointer;
+                font-size: 28px;
+                color: rgb(136, 136, 136);
+                font-weight: bold;
+            }
+
+            // 当前拖拽元素黑色边框
+            .input-center {
+                text-align: center;
+                line-height: 80px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .resizable-text {
+                input::-webkit-input-placeholder {
+                    color: #fff;
+                    text-align: center;
+                    // font-size: 14px;
+                }
+            }
+            .handle {
+                border: none !important;
+            }
+            input {
+                // width: 100px !important;
+                width: 100%;
+                height: 100%;
+                border: none !important;
+                outline: none;
+                font-size: 16px;
+                color: #333;
+                background: none;
+                text-align: left;
+                resize: none;
+            }
+            input:focus {
+                outline: none;
+                border: none;
+            }
+            input::-webkit-input-placeholder {
+                color: #999;
+                // font-size: 14px;
+            }
+            .areaBox{
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                overflow: hidden;
+                background-color: #5094FF;
+                color: #fff;
+                font-size: 16px;
+                white-space: nowrap;
+            }
+            .circle{
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                animation: cc 0.5s ease-in-out infinite;
+                background-color: #5094FF;
+            }
+            @keyframes cc {
+                0%{
+                    opacity: 1;
+                }
+                50%{
+                    opacity: 0.5;
+                }
+                100%{
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    // 添加页面模态框
+    .modal-box {
+        .ipt-box {
+            span {
+                float: left;
+                margin: 14px 20px 0 0;
+            }
+            .inp {
+                float: left;
+            }
+        }
+    }
+
+    // 当前拖拽元素黑色边框
+    .input-resizable {
+        border: none !important;
+    }
+
+    .deviceInfo{
+        form{
+            width: 100%;
+            float: left;
+
+            .el-form-item{
+                float: left;
+                width: 50%;
+    
+                .el-date-editor.el-input{
+                    width: 100%;
+                }
+            }
+            ::v-deep .must .el-form-item__label:before{
+                content: "*";
+                display: inline-block;
+                color: red;
+            }
+            .bottom{
+                float: left;
+                width: 100%;
+                padding-top: 22px;
+                border-top: 1px solid #ccc;
+            }
+            .noImg{
+                border: none;
+            }
+        }
+        
+    }
+}

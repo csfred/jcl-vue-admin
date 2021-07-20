@@ -165,7 +165,7 @@ export default {
             t.ruleForm.stationLat = e.point.lat
             t.ruleForm.stationLon = e.point.lng
          });         
-         map.setCurrentCity("桂林");          // 设置地图显示的城市 此项是必须设置的
+         map.setCurrentCity("西安");          // 设置地图显示的城市 此项是必须设置的
          map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
       },
 
@@ -213,6 +213,7 @@ export default {
                      devOpsNum: this.ruleForm.devOpsNum,
                      connectTel: this.ruleForm.connectTel,
                      bgImgPath: this.ruleForm.bgImgPath,
+                     bgWaterImgPath: this.ruleForm.bgWaterImgPath,
                      remarks1: this.ruleForm.remarks1,
                      remarks2: this.ruleForm.remarks2,
                      remarks3: this.ruleForm.remarks3

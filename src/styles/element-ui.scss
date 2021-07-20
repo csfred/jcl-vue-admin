@@ -1,0 +1,124 @@
+// cover some element-ui styles
+
+.el-breadcrumb__inner,
+.el-breadcrumb__inner a {
+  font-weight: 400 !important;
+}
+
+.el-upload {
+  input[type="file"] {
+    display: none !important;
+  }
+}
+
+.el-upload__input {
+  display: none;
+}
+
+
+// to fixed https://github.com/ElemeFE/element/issues/2461
+.el-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+}
+
+// refine element ui upload
+.upload-container {
+  .el-upload {
+    width: 100%;
+
+    .el-upload-dragger {
+      width: 100%;
+      height: 200px;
+    }
+  }
+}
+
+// dropdown
+.el-dropdown-menu {
+  a {
+    display: block
+  }
+}
+
+// to fix el-date-picker css style
+.el-range-separator {
+  box-sizing: content-box;
+}
+
+
+.el-button--primary{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  background: #5094FF;
+}
+
+.el-table th{
+  background: #E8F1FF;
+}
+.el-table thead{
+  color: #212128;
+}
+.el-table__header-wrapper{
+  border-radius: 8px 8px 0px 0px;
+}
+.el-table--striped .el-table__body tr.el-table__row--striped td{
+  background: #F8FBFF;
+}
+
+.el-checkbox__inner{
+  width: 18px;
+  height: 18px;
+  border: 0;
+  background: url('../assets/images/Components/checkbox_pre.png') no-repeat;
+  background-size: 18px 18px;
+  transition: background .2s;
+}
+.el-checkbox__input.is-checked .el-checkbox__inner, 
+.el-checkbox__input.is-indeterminate .el-checkbox__inner{
+  background-color: unset;
+  background-image: url('../assets/images/Components/checkbox_act.png');
+}
+.el-checkbox__input.is-indeterminate .el-checkbox__inner::before,
+.el-checkbox__inner::after{
+  display: none;
+}
+
+.el-pagination{
+  margin: 40px 0;
+  text-align: center;
+}
+.el-pager li,.el-pagination .btn-next, .el-pagination .btn-prev{
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: 0 10px;
+  font-weight: normal;
+  line-height: 30px;
+  color: #333;
+  border: 1px solid #EEEEEE;
+  border-radius: 4px;
+  transition: all .2s;
+}
+.el-pager li.active+li{
+  border-left: 1px solid #EEEEEE;
+}
+.el-pager li.active{
+  color: #fff;
+  background: #5094FF;
+}
+.el-pager li:not(.active):hover,
+.el-pagination .btn-next:not([disabled]):hover, 
+.el-pagination .btn-prev:not([disabled]):hover{
+  color: #333;
+  border-color: #5094FF;
+}
+.el-pagination .el-pagination button, .el-pagination span:not([class*=suffix]){
+  vertical-align: unset!important;
+}
+.el-pagination .el-pagination__total{
+  margin: 0 8px;
+}

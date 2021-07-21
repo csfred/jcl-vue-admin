@@ -23,8 +23,8 @@ module.exports = {
       proxy: {
         '/base': {
             // target: process.env.VUE_APP_BASE_URL, 
-            target: 'http://8.140.106.126:8080/iot-server',
-            //target: 'http://127.0.0.1:8080/iot-server',
+            target: 'http://8.140.106.126:8082/iot-server',
+            //target: 'http://127.0.0.1:8082/iot-server',
             changeOrigin: true,
             pathRewrite: {
                 '^/base': '/base'

@@ -47,7 +47,7 @@
           width="120">
         </el-table-column>
         <el-table-column
-          prop="name"
+          prop="principal"
           label="负责人"
           width="120">
         </el-table-column>
@@ -66,11 +66,11 @@
           label="备注2"
           width="120">
         </el-table-column>   
-        <el-table-column
+        <!-- <el-table-column
           prop="remarks3"
           label="备注3"
           width="120">
-        </el-table-column>                           
+        </el-table-column>                            -->
         <el-table-column
           fixed="right"
           label="操作"

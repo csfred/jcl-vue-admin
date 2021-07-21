@@ -1,9 +1,9 @@
 import ajax from './ajax'
 
-//const preurl = process.env.ENV === 'development'  ? 'http://8.140.106.126:8080/iot-server/base' : "";
+//const preurl = process.env.ENV === 'development'  ? 'http://8.140.106.126:8082/iot-server/base' : "";
 
-//const preurl = 'http://localhost:8080/iot-server/base';
-const preurl = 'http://8.140.106.126:8080/iot-server/base';
+//const preurl = 'http://localhost:8082/iot-server/base';
+const preurl = 'http://8.140.106.126:8082/iot-server/base';
 
 // 封装各种接口请求
 // export const 接口名 = (参数对象) => ajax.get('/路由',参数对象);

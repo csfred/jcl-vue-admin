@@ -31,8 +31,8 @@
                   <el-input v-model="ruleForm.devOpsNum"></el-input>
                </el-form-item>
                <!--  prop="name" -->
-               <el-form-item label="负责人">
-                  <el-input v-model="ruleForm.name"></el-input>
+               <el-form-item label="负责人" prop="principal">
+                  <el-input v-model="ruleForm.principal"></el-input>
                </el-form-item>  
                <el-form-item label="联系电话" prop="connectTel">
                   <el-input v-model="ruleForm.connectTel"></el-input>
@@ -43,9 +43,9 @@
                <el-form-item label="备注2">
                   <el-input v-model="ruleForm.remarks2"></el-input>
                </el-form-item>  
-               <el-form-item label="备注3">
+               <!-- <el-form-item label="备注3">
                   <el-input v-model="ruleForm.remarks3"></el-input>
-               </el-form-item>
+               </el-form-item> -->
                <el-form-item>
                   <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
                   <el-button @click="resetForm('ruleForm')">重置</el-button>
@@ -81,6 +81,7 @@ export default {
             "processTech": "",
             "processScale": null,
             "devOpsNum": null,
+            "principal": "",
             "connectTel": "",
             "bgDevImgPath": "",
             "bgWaterImgPath": "",
@@ -131,12 +132,12 @@ export default {
             this.ruleForm.processTech = params.processTech
             this.ruleForm.processScale = params.processScale
             this.ruleForm.devOpsNum = params.devOpsNum
+            this.ruleForm.principal = params.principal
             this.ruleForm.connectTel = params.connectTel
             this.ruleForm.bgDevImgPath = params.bgDevImgPath
             this.ruleForm.bgWaterImgPath = params.bgWaterImgPath
             this.ruleForm.remarks1 = params.remarks1
             this.ruleForm.remarks2 = params.remarks2
-            this.ruleForm.remarks3 = params.remarks3
          } else {
             this.types = 0
          }
@@ -186,12 +187,13 @@ export default {
                      processTech: this.ruleForm.processTech,
                      processScale: this.ruleForm.processScale,
                      devOpsNum: this.ruleForm.devOpsNum,
+                     principal: this.ruleForm.principal,
                      connectTel: this.ruleForm.connectTel,
                      bgDevImgPath: this.ruleForm.bgDevImgPath,
                      bgWaterImgPath: this.ruleForm.bgWaterImgPath,
                      remarks1: this.ruleForm.remarks1,
                      remarks2: this.ruleForm.remarks2,
-                     remarks3: this.ruleForm.remarks3
+                     remarks3: ''
                   }).then(data => {
                      console.log(data);
                      this.centerDialogVisible = false
@@ -213,6 +215,7 @@ export default {
                      processTech: this.ruleForm.processTech,
                      processScale: this.ruleForm.processScale,
                      devOpsNum: this.ruleForm.devOpsNum,
+                     principal: this.ruleForm.principal,
                      connectTel: this.ruleForm.connectTel,
                      bgDevImgPath: this.ruleForm.bgDevImgPath,
                      bgWaterImgPath: this.ruleForm.bgWaterImgPath,
@@ -278,12 +281,12 @@ export default {
          this.ruleForm.processTech = ''
          this.ruleForm.processScale = ''
          this.ruleForm.devOpsNum = ''
+         this.ruleForm.principal = ''
          this.ruleForm.connectTel = ''
          this.ruleForm.bgDevImgPath = ''
          this.ruleForm.bgWaterImgPath = ''
          this.ruleForm.remarks1 = ''
          this.ruleForm.remarks2 = ''
-         this.ruleForm.remarks3 = ''
       }
    }   
 }

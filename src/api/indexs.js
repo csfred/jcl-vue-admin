@@ -8,7 +8,7 @@ const preurl = 'http://8.140.106.126:8080/iot-server/base';
 // 封装各种接口请求
 // export const 接口名 = (参数对象) => ajax.get('/路由',参数对象);
 
-export const saveStationInfo = (data) => ajax.post('/saveStationInfo', data);
+export const saveStationInfo = (data) => ajax.post(preurl+'/saveStationInfo', data);
 
 // 获取所有站点
 export const getAllStationInfo = (data) => ajax.get('/getPageAllStationInfo', data);
@@ -27,7 +27,7 @@ export const testPost = (data) => ajax.post(preurl+'/saveMonitorInfo', 'applicat
 export const getDeviceInfoByStationNo = (data) => ajax.get('/getDeviceInfoByStationNo', data);
 
 // 编辑站点
-export const updateStationInfo = (data) => ajax.post('/updateStationInfo', data);
+export const updateStationInfo = (data) => ajax.post(preurl+'/updateStationInfo', data);
 
 // 删除站点
 export const deleteStationInfo = (data) => ajax.get('/deleteStationInfo', data);

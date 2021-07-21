@@ -49,7 +49,7 @@
                <el-form-item>
                   <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
                   <el-button @click="resetForm('ruleForm')">重置</el-button>
-                  <el-button @click="testPost()">testPost</el-button>
+                  <!--<el-button @click="testPost()">testPost</el-button>-->
                </el-form-item>
             </el-form>
          </el-dialog>        
@@ -132,7 +132,8 @@ export default {
             this.ruleForm.processScale = params.processScale
             this.ruleForm.devOpsNum = params.devOpsNum
             this.ruleForm.connectTel = params.connectTel
-            this.ruleForm.bgImgPath = params.bgImgPath
+            this.ruleForm.bgDevImgPath = params.bgDevImgPath
+            this.ruleForm.bgWaterImgPath = params.bgWaterImgPath
             this.ruleForm.remarks1 = params.remarks1
             this.ruleForm.remarks2 = params.remarks2
             this.ruleForm.remarks3 = params.remarks3
@@ -186,7 +187,8 @@ export default {
                      processScale: this.ruleForm.processScale,
                      devOpsNum: this.ruleForm.devOpsNum,
                      connectTel: this.ruleForm.connectTel,
-                     bgImgPath: this.ruleForm.bgImgPath,
+                     bgDevImgPath: this.ruleForm.bgDevImgPath,
+                     bgWaterImgPath: this.ruleForm.bgWaterImgPath,
                      remarks1: this.ruleForm.remarks1,
                      remarks2: this.ruleForm.remarks2,
                      remarks3: this.ruleForm.remarks3
@@ -212,7 +214,7 @@ export default {
                      processScale: this.ruleForm.processScale,
                      devOpsNum: this.ruleForm.devOpsNum,
                      connectTel: this.ruleForm.connectTel,
-                     bgImgPath: this.ruleForm.bgImgPath,
+                     bgDevImgPath: this.ruleForm.bgDevImgPath,
                      bgWaterImgPath: this.ruleForm.bgWaterImgPath,
                      remarks1: this.ruleForm.remarks1,
                      remarks2: this.ruleForm.remarks2,
@@ -277,7 +279,8 @@ export default {
          this.ruleForm.processScale = ''
          this.ruleForm.devOpsNum = ''
          this.ruleForm.connectTel = ''
-         this.ruleForm.bgImgPath = ''
+         this.ruleForm.bgDevImgPath = ''
+         this.ruleForm.bgWaterImgPath = ''
          this.ruleForm.remarks1 = ''
          this.ruleForm.remarks2 = ''
          this.ruleForm.remarks3 = ''

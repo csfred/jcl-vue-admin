@@ -868,6 +868,7 @@ export default {
       this.sitePageArr = [];
       this.deviceDataArr = [];
       this.sitePage = "";
+      this.currentBg = "";
       const { bgDevImgPath, remarks3 } = currentItem;
       if (bgDevImgPath && remarks3) {
         JSON.parse(bgDevImgPath).forEach((val) => {
@@ -1124,7 +1125,7 @@ export default {
     },
     updateStationInfo() {
       //保存页面，更新站点信息
-      let param = this.stationArr.find((item) => item.stationNo);
+      let param = this.stationArr.find((item) => item.stationNo===this.station);
       if (!this.station || !param) return;
       const sitePageArr = this.sitePageArr.filter((item) => item.haveBg);
       const bgDevImgPath = sitePageArr.map((item) => {

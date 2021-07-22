@@ -141,11 +141,14 @@
                 :key="k"
               >
                 <span class="label">{{ k }}</span>
-                <span class="value" :class="{ danger: item[`${k}Danger`] }" :style="{
-                  color: item.color,
-                }">{{
-                  val != "null" ? val : "无数据"
-                }}</span>
+                <span
+                  class="value"
+                  :class="{ danger: item[`${k}Danger`] }"
+                  :style="{
+                    color: item.color,
+                  }"
+                  >{{ val != "null" ? val : "无数据" }}</span
+                >
               </div>
             </template>
           </vue-drag-resize-rotate>
@@ -795,11 +798,6 @@ export default {
       if (firstC) {
         this.station = firstC.value;
         this.selectStation(firstC.value);
-        const firstPage = this.sitePageArr[0];
-        if (firstPage) {
-          this.sitePage = firstPage.value;
-          this.handlePageChange(firstPage.value);
-        }
       }
     },
     getAllStationInfo() {
@@ -838,6 +836,11 @@ export default {
       }
       clearInterval(this.timer2);
       this.intervalCheckStationIsOnline(val);
+      const firstPage = this.sitePageArr[0];
+      if (firstPage) {
+        this.sitePage = firstPage.value;
+        this.handlePageChange(firstPage.value);
+      }
     },
     intervalCheckStationIsOnline(val) {
       //定时查询站点是否正常

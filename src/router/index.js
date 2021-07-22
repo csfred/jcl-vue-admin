@@ -28,14 +28,14 @@ export const constantRoutes = [
         path: 'index',
         name: 'Index',
         root: true,
-        component: () => import('@/views/siteInfo/index'),
+        component: () => import('@/views/stationInfo/index'),
         meta: { title: '工作台' }
       }
     ]
   },
   // 站点基本信息
   {
-    path: '/site',
+    path: '/station',
     component: Layout,
     redirect: '/order/index',
     // name: 'site',
@@ -44,25 +44,25 @@ export const constantRoutes = [
       {
         path: 'index',
         name: 'site-menu',
-        component: () => import('@/views/siteInfo/index'),
+        component: () => import('@/views/stationInfo/index'),
         meta: { title: '站点展示' },
       },{
-        path: 'editSite',
+        path: 'updateStation',
         name: 'site-menu2',
-        component: () => import('@/views/siteInfo/editSite'),
+        component: () => import('@/views/stationInfo/updateStation'),
         meta: { title: '站点编辑' }
       },
       // 新建站点
       {
-        path: 'addSite',
+        path: 'addStation',
         name: 'site-menu3',
-        component: () => import('@/views/siteInfo/addSite'),
+        component: () => import('@/views/stationInfo/addStation'),
       },
       // 编辑站点 
       {
-        path: 'editSite',
+        path: 'updateStation',
         name: 'site-menu4',
-        component: () => import('@/views/siteInfo/addSite'),
+        component: () => import('@/views/stationInfo/updateStation'),
       }
     ]
   },  

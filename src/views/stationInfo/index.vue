@@ -15,7 +15,6 @@
       </baidu-map>
      </div>
 
-
       <!-- 站点侧边信息 -->
       <div class="silder-container">
         <el-drawer
@@ -66,15 +65,14 @@
                   <span class="label">备注2:</span>
                   <span>{{ currentSiseData.remarks2 }}</span>
                 </div>
-                <div class="item">
+                <!-- <div class="item">
                   <span class="label">备注3:</span>
                   <span>{{ currentSiseData.remarks3 }}</span>
-                </div>                 
+                </div>                  -->
               </div>
             </div>
-        </el-drawer>       
+        </el-drawer>
       </div>
-
 
   </div>
 </template>
@@ -82,11 +80,13 @@
 <script>
 import { getAllStationInfo } from '../../api/indexs'
 
+const zoomVal = 10
+
 export default {
   data() {
     return {
-      zoom: 15,
-      autoLocationPoint: { lng: 110.299121, lat:25.274215 },
+      zoom: zoomVal,
+      autoLocationPoint: { lng: 112.851274, lat: 35.497553 },
       initLocation: false,
 
       mapListData: [], // 站点列表数组
@@ -96,11 +96,11 @@ export default {
       drawer: false,
       direction: 'rtl',
       drawerTitle: '', // 侧边站点名称
-      currentSiseData: {}, // 单个站点信息
+      currentSiseData: {} // 单个站点信息
     }
   },
 
-  created() {  
+  created() {
     // 获取所有站点
     getAllStationInfo({
       page: 1,
@@ -109,65 +109,64 @@ export default {
     }).then(data => {
       this.mapListData = data.data.dataList
       this.showMap = true
-    });
-  },  
+    })
+  },
 
   methods: {
     // 百度地图
     handler({ BMap, map }) {
-      let t = this;
+      const t = this
 
       // 遍历地图数据
       t.mapListData.forEach((_t, i) => {
-
         // 获取坐标值
-        var point = new BMap.Point(_t.stationLon, _t.stationLat);
+        var point = new BMap.Point(_t.stationLon, _t.stationLat)
         // 以坐某项数据的标值为中心
-        map.centerAndZoom(new BMap.Point(this.mapListData[0].stationLon, this.mapListData[0].stationLat), 15);
+        map.centerAndZoom(new BMap.Point(this.mapListData[0].stationLon, this.mapListData[0].stationLat), 15)
         // 将标注添加到地图
-        var marke = new BMap.Marker(new BMap.Point(_t.stationLon, _t.stationLat));
+        var marke = new BMap.Marker(new BMap.Point(_t.stationLon, _t.stationLat))
 
         var opts = {
           position: new BMap.Point(_t.stationLon, _t.stationLat), // 指定文本标注所在的地理位置
           offset: new BMap.Size(0, 20) // 设置文本偏移量
-        };
+        }
         // 创建文本标注对象
-        var label = new BMap.Label(_t.stationName, opts);
+        var label = new BMap.Label(_t.stationName, opts)
 
         // 自定义文本标注样式
         label.setStyle({
-            color: '#555',
-            borderRadius: '50px',
-            border: 'none',
-            padding: '0 15px',
-            fontSize: '14px',
-            height: '36px',
-            lineHeight: '36px',
-            boxShadow: '0 2px 4px rgba(0,0,0,.3)',
-            transform: 'translateX(-50%)',
-            maxWidth: '400px',
-            overflow: 'hidden',
-            whiteSpace: 'nowrap',
-            textOverflow: 'ellipsis'
-        });
+          color: '#555',
+          borderRadius: '50px',
+          border: 'none',
+          padding: '0 15px',
+          fontSize: '14px',
+          height: '36px',
+          lineHeight: '36px',
+          boxShadow: '0 2px 4px rgba(0,0,0,.3)',
+          transform: 'translateX(-50%)',
+          maxWidth: '400px',
+          overflow: 'hidden',
+          whiteSpace: 'nowrap',
+          textOverflow: 'ellipsis'
+        })
 
         // 点击锚点
-        marke.addEventListener("click", function () {
-            // 以坐某项数据的标值为中心
-            map.centerAndZoom(point, 15);
-            // 显示侧边站点信息
-            t.drawer = true
-            // 获取站点名
-            t.drawerTitle = _t.stationName
-            t.currentSiseData = _t
-            console.log(t.currentSiseData, '=============t.currentSiseData');
-        });
+        marke.addEventListener('click', function() {
+          // 以坐某项数据的标值为中心
+          map.centerAndZoom(point, zoomVal)
+          // 显示侧边站点信息
+          t.drawer = true
+          // 获取站点名
+          t.drawerTitle = _t.stationName
+          t.currentSiseData = _t
+          console.log(t.currentSiseData, '=============t.currentSiseData')
+        })
 
         // 将标注添加到地图
-        map.addOverlay(marke);
+        map.addOverlay(marke)
         // 添加文本描述
-        map.addOverlay(label);
-      });
+        map.addOverlay(label)
+      })
     },
 
     // 点击位置获取经纬度
@@ -182,16 +181,16 @@ export default {
     handleClose(done) {
       this.$confirm('确认关闭？')
         .then(_ => {
-          done();
+          done()
         })
-        .catch(_ => {});
+        .catch(_ => {})
     },
 
     toMachine() {
       this.$router.push({
         path: '/machine/index'
       })
-    }    
+    }
   }
 }
 </script>

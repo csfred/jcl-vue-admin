@@ -97,6 +97,15 @@
               v-else-if="item.id === 20"
               @dblclick.stop.prevent="handleDeviceInfo(item)"
             ></div>
+            <!-- 流动跑马灯 -->
+                  <div
+                    class="linePlay"
+                    v-else-if="item.id === 21"
+                    :style="{
+                      'animation-duration': `${item.playSpeed==0?0:10/item.playSpeed}s`,
+                    }"
+                    @dblclick.stop.prevent="handleDeviceInfo(item)"
+                  ></div>
             <img
               v-else
               class="rotateImg"
@@ -121,6 +130,7 @@
                 item.id !== 0 &&
                 item.id !== 19 &&
                 item.id !== 20 &&
+                item.id !== 21 &&
                 item.id !== 1 &&
                 item.id != 4 &&
                 item.id != 5 &&
@@ -271,6 +281,9 @@
           <el-form-item label="非0指示灯颜色" v-if="permission('notZeroColor')">
             <el-input readonly v-model="deviceInfo.notZeroColor"></el-input>
           </el-form-item>
+          <el-form-item label="流动速度" v-if="permission('playSpeed')">
+            <el-input readonly :value="deviceInfo.playSpeed" label="0-100,数值越大流动越快"></el-input>
+          </el-form-item>
           <el-form-item label="关联变量" v-if="permission('relatedName')">
             <el-input
               readonly
@@ -408,11 +421,16 @@ export default {
 
         relatedName: "", //关联变量
         fieldVisible: "", //隐藏关联变量
+
+        zeroColor: "",
+        notZeroColor: "",
+        playSpeed: "", //跑马灯线条移动速度
       },
       deviceForm: {
         custom0: 0,
         custom19: 1,
         custom20: 1,
+        custom21: 1,
         custom1: 4,
         custom2: 2,
         custom3: 1,
@@ -437,13 +455,6 @@ export default {
           "color",
           "fontSize",
         ],
-        r20: [
-          //指示灯
-          "title",
-          "zeroColor",
-          "notZeroColor",
-          "relatedName",
-        ],
         r19: [
           //显示屏
           "showLabel",
@@ -452,6 +463,19 @@ export default {
           "remark3",
           "color",
           "fontSize",
+          "relatedName",
+        ],
+        r20: [
+          //指示灯
+          "title",
+          "zeroColor",
+          "notZeroColor",
+          "relatedName",
+        ],
+        r21: [
+          //显示屏
+          "title",
+          "playSpeed",
           "relatedName",
         ],
         r1: [
@@ -983,7 +1007,7 @@ export default {
               let { varListFields } = data;
               varListFields = JSON.parse(varListFields);
               item.varListFields = varListFields;
-              if (item.id === 19 || item.id === 20) {
+              if (item.id === 19 || item.id === 20 || item.id === 21) {
                 item.value = varListFields[item.relatedName];
               }
 

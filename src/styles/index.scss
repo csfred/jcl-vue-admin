@@ -67,3 +67,32 @@ div:focus {
 .vdr{
   border: none !important;
 }
+
+//line-loading 流动图
+.linePlay {
+  width: 100%;
+  height: 100%;
+  animation-name: linePlayAni;
+  animation-duration: 0.5s;
+  animation-timing-function:linear;
+  animation-iteration-count:infinite;
+  background-size: 30px 30px;
+  background-image: linear-gradient(
+      45deg,
+      #3246bc 25%,
+      transparent 25%,
+      transparent 50%,
+      #3246bc 50%,
+      #3246bc 75%,
+      transparent 75%,
+      transparent
+  );
+}
+@keyframes linePlayAni {
+  0% {
+      background-position: 0 0;
+  }
+  100%{
+      background-position: 60px 30px;
+  }
+}

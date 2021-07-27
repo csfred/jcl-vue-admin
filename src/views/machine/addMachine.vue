@@ -13,8 +13,8 @@
               @dblclick="addDevice(item, index)"
             >
               <div class="item" :title="item.devTypeName">
-                <img :src="item.imgSrc" alt="" v-if="item.id != 20" />
-                <span v-else class="circle"></span>
+                <img :src="item.imgSrc" alt="" v-if="item.id != 20 && item.id != 21" />
+                <span v-else class="circle" :class="{linePlay:item.id===21}"></span>
                 {{ item.devTypeName }}
               </div>
             </div>
@@ -157,6 +157,15 @@
                     v-else-if="item.id === 20"
                     @dblclick.stop.prevent="handleDeviceInfo(item)"
                   ></div>
+                  <!-- 流动跑马灯 -->
+                  <div
+                    class="linePlay"
+                    v-else-if="item.id === 21"
+                    :style="{
+                      'animation-duration': `${item.playSpeed==0?0:10/item.playSpeed}s`,
+                    }"
+                    @dblclick.stop.prevent="handleDeviceInfo(item)"
+                  ></div>
                   <img
                     v-else
                     class="rotateImg"
@@ -295,6 +304,9 @@
           </el-form-item>
           <el-form-item label="非0指示灯颜色" v-if="permission('notZeroColor')">
             <el-input v-model="deviceInfo.notZeroColor"></el-input>
+          </el-form-item>
+          <el-form-item label="流动速度" v-if="permission('playSpeed')">
+            <el-input-number v-model="deviceInfo.playSpeed" :min="0" :max="100" label="0-100,数值越大流动越快"></el-input-number>
           </el-form-item>
           <el-form-item label="关联变量" v-if="permission('relatedName')">
             <el-input type="relatedName" v-model="deviceInfo.relatedName"></el-input>
@@ -451,11 +463,13 @@ export default {
         fieldVisible: true, //隐藏关联变量
         zeroColor: "",
         notZeroColor: "",
+        playSpeed: "", //跑马灯线条移动速度
       },
       deviceForm: {
         custom0: 0,
         custom19: 1,
         custom20: 1,
+        custom21: 1,
         custom1: 4,
         custom2: 2,
         custom3: 1,
@@ -480,13 +494,6 @@ export default {
           "color",
           "fontSize",
         ],
-        r20: [
-          //指示灯
-          "title",
-          "zeroColor",
-          "notZeroColor",
-          "relatedName",
-        ],
         r19: [
           //显示屏
           "showLabel",
@@ -495,6 +502,19 @@ export default {
           "remark3",
           "color",
           "fontSize",
+          "relatedName",
+        ],
+        r20: [
+          //指示灯
+          "title",
+          "zeroColor",
+          "notZeroColor",
+          "relatedName",
+        ],
+        r21: [
+          //显示屏
+          "title",
+          "playSpeed",
           "relatedName",
         ],
         r1: [
@@ -846,7 +866,8 @@ export default {
         // 添加显示屏到设备数组内
         this.listData.push(
           { id: 0, devTypeName: "标题", imgSrc: Images[0] },
-          { id: 20, devTypeName: "指示灯", imgSrc: null }
+          { id: 20, devTypeName: "指示灯", imgSrc: null },
+          { id: 21, devTypeName: "跑马灯", imgSrc: null }
         );
       });
     },
@@ -895,7 +916,7 @@ export default {
         name: item.devTypeName,
         id: id,
         deg: 0,
-        w: 50,
+        w: id === 21 ? 100 : 50,
         h: 40,
         x: 50,
         y: 50,
@@ -903,7 +924,7 @@ export default {
         key: new Date().getTime(),
         value: "",
       };
-      if (id != 0 && id != 19) {
+      if (id != 0 && id != 19 && id != 21) {
         Object.assign(param, {
           w: 70,
           h: 70,
@@ -1125,7 +1146,7 @@ export default {
     },
     updateStationInfo() {
       //保存页面，更新站点信息
-      let param = this.stationArr.find((item) => item.stationNo===this.station);
+      let param = this.stationArr.find((item) => item.stationNo === this.station);
       if (!this.station || !param) return;
       const sitePageArr = this.sitePageArr.filter((item) => item.haveBg);
       const bgDevImgPath = sitePageArr.map((item) => {
@@ -1217,11 +1238,10 @@ export default {
       //更新设备信息
       $debouce(() => {
         const currentDevice = this.currentDevice;
+        const { id } = currentDevice;
         let devVarFields = [];
-        const deviceForm = this.deviceForm[`r${currentDevice.id}`];
-        const customField = deviceForm.slice(
-          -this.deviceForm[`custom${currentDevice.id}`]
-        );
+        const deviceForm = this.deviceForm[`r${id}`];
+        const customField = deviceForm.slice(-this.deviceForm[`custom${id}`]);
         customField.forEach((key) => {
           const val = this.deviceInfo[key];
           devVarFields.push(val ? val : "");
@@ -1242,7 +1262,7 @@ export default {
           devNo,
           stationNo: this.station,
           devName: currentDevice.name,
-          devType: currentDevice.id,
+          devType: id,
           devVarFields: JSON.stringify(devVarFields),
           deviceVector: JSON.stringify(
             Object.assign(deviceVector, {
@@ -1262,14 +1282,11 @@ export default {
               this.dialogVisible = false;
               this.isBtnClick = false;
             }
-            if (currentDevice.id === 0) {
-              currentDevice.title = this.deviceInfo.title;
+            if (id === 0 || id === 19) {
               currentDevice.color = this.deviceInfo.color;
               currentDevice.fontSize = this.deviceInfo.fontSize;
-            } else if (currentDevice.id === 19) {
-              currentDevice.showLabel = this.deviceInfo.showLabel;
-              currentDevice.color = this.deviceInfo.color;
-              currentDevice.fontSize = this.deviceInfo.fontSize;
+              id === 0 && (currentDevice.title = this.deviceInfo.title);
+              id === 19 && (currentDevice.showLabel = this.deviceInfo.showLabel);
             }
             currentDevice.devVarFields = devVarFields;
             Object.assign(currentDevice, deviceVector);

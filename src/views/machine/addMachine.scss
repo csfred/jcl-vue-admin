@@ -44,18 +44,21 @@
                 overflow: hidden;
                 cursor: pointer;
 
-                img{
+                img {
                     width: 20px;
                     height: 20px;
                     vertical-align: middle;
                 }
-                .circle{
+                .circle {
                     display: inline-block;
                     width: 20px;
                     height: 20px;
                     vertical-align: middle;
                     border-radius: 50%;
                     border: 1px solid #666666;
+                }
+                .linePlay {
+                    border-radius: 0;
                 }
             }
         }
@@ -82,7 +85,7 @@
             position: relative;
             overflow: auto;
 
-            .dragBox{
+            .dragBox {
                 display: inline-block;
                 position: relative;
             }
@@ -139,31 +142,34 @@
                 color: #999;
                 // font-size: 14px;
             }
-            .areaBox{
+            .areaBox {
                 width: 100%;
                 height: 100%;
                 text-align: center;
                 overflow: hidden;
-                background-color: #5094FF;
+                background-color: #5094ff;
                 color: #fff;
                 font-size: 16px;
                 white-space: nowrap;
             }
-            .circle{
+            .circle {
                 width: 100%;
                 height: 100%;
                 border-radius: 50%;
                 animation: cc 0.5s ease-in-out infinite;
-                background-color: #5094FF;
+                background-color: #5094ff;
+            }
+            .linePlay {
+                background-color: #fff;
             }
             @keyframes cc {
-                0%{
+                0% {
                     opacity: 1;
                 }
-                50%{
+                50% {
                     opacity: 0.5;
                 }
-                100%{
+                100% {
                     opacity: 1;
                 }
             }
@@ -188,34 +194,33 @@
         border: none !important;
     }
 
-    .deviceInfo{
-        form{
+    .deviceInfo {
+        form {
             width: 100%;
             float: left;
 
-            .el-form-item{
+            .el-form-item {
                 float: left;
                 width: 50%;
-    
-                .el-date-editor.el-input{
+
+                .el-date-editor.el-input {
                     width: 100%;
                 }
             }
-            ::v-deep .must .el-form-item__label:before{
+            ::v-deep .must .el-form-item__label:before {
                 content: "*";
                 display: inline-block;
                 color: red;
             }
-            .bottom{
+            .bottom {
                 float: left;
                 width: 100%;
                 padding-top: 22px;
                 border-top: 1px solid #ccc;
             }
-            .noImg{
+            .noImg {
                 border: none;
             }
         }
-        
     }
 }

@@ -14,7 +14,7 @@
             >
               <div class="item" :title="item.devTypeName">
                 <img :src="item.imgSrc" alt="" v-if="item.id != 20 && item.id != 21" />
-                <span v-else class="circle" :class="{linePlay:item.id===21}"></span>
+                <span v-else class="circle" :class="{ linePlay: item.id === 21 }"></span>
                 {{ item.devTypeName }}
               </div>
             </div>
@@ -159,10 +159,10 @@
                   ></div>
                   <!-- 流动跑马灯 -->
                   <div
-                    class="linePlay"
+                    class="linePlay linePlayBox"
                     v-else-if="item.id === 21"
                     :style="{
-                      'animation-duration': `${item.playSpeed==0?0:10/item.playSpeed}s`,
+                      'background-image': `linear-gradient(45deg,${item.lineColor} 25%,transparent 25%,transparent 50%,${item.lineColor} 50%,${item.lineColor} 75%,transparent 75%,transparent  )`,
                     }"
                     @dblclick.stop.prevent="handleDeviceInfo(item)"
                   ></div>
@@ -305,8 +305,16 @@
           <el-form-item label="非0指示灯颜色" v-if="permission('notZeroColor')">
             <el-input v-model="deviceInfo.notZeroColor"></el-input>
           </el-form-item>
+          <el-form-item label="流水背景色" v-if="permission('lineColor')">
+            <el-input v-model="deviceInfo.lineColor"></el-input>
+          </el-form-item>
           <el-form-item label="流动速度" v-if="permission('playSpeed')">
-            <el-input-number v-model="deviceInfo.playSpeed" :min="0" :max="100" label="0-100,数值越大流动越快"></el-input-number>
+            <el-input-number
+              v-model="deviceInfo.playSpeed"
+              :min="0"
+              :max="100"
+              label="0-100,数值越大流动越快"
+            ></el-input-number>
           </el-form-item>
           <el-form-item label="关联变量" v-if="permission('relatedName')">
             <el-input type="relatedName" v-model="deviceInfo.relatedName"></el-input>
@@ -463,7 +471,8 @@ export default {
         fieldVisible: true, //隐藏关联变量
         zeroColor: "",
         notZeroColor: "",
-        playSpeed: "", //跑马灯线条移动速度
+        // playSpeed: "", //跑马灯线条移动速度
+        lineColor: "", //跑马灯线条颜色
       },
       deviceForm: {
         custom0: 0,
@@ -514,7 +523,7 @@ export default {
         r21: [
           //显示屏
           "title",
-          "playSpeed",
+          "lineColor",
           "relatedName",
         ],
         r1: [

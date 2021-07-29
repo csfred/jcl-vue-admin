@@ -98,14 +98,28 @@
               @dblclick.stop.prevent="handleDeviceInfo(item)"
             ></div>
             <!-- 流动跑马灯 -->
-                  <div
-                    class="linePlay"
-                    v-else-if="item.id === 21"
-                    :style="{
-                      'animation-duration': `${item.playSpeed==0?0:10/item.playSpeed}s`,
-                    }"
-                    @dblclick.stop.prevent="handleDeviceInfo(item)"
-                  ></div>
+            <div
+              class="linePlayBox"
+              :class="{ linePlay: item.value < 0 || item.value > 0 }"
+              v-else-if="item.id === 21"
+              :style="{
+                'animation-name': `${
+                  item.value < 0
+                    ? 'linePlayAni2'
+                    : item.value > 0
+                    ? 'linePlayAni'
+                    : 'none'
+                }`,
+                'animation-duration': `${
+                  item.value == 0 ? 0 : 5 / Math.abs(Number(item.value))
+                }s`,
+                'background-image':
+                  item.value < 0 || item.value > 0
+                    ? `linear-gradient(45deg,${item.lineColor} 25%,transparent 25%,transparent 50%,${item.lineColor} 50%,${item.lineColor} 75%,transparent 75%,transparent  )`
+                    : 'none',
+              }"
+              @dblclick.stop.prevent="handleDeviceInfo(item)"
+            ></div>
             <img
               v-else
               class="rotateImg"
@@ -281,8 +295,15 @@
           <el-form-item label="非0指示灯颜色" v-if="permission('notZeroColor')">
             <el-input readonly v-model="deviceInfo.notZeroColor"></el-input>
           </el-form-item>
+          <el-form-item label="流水背景色" v-if="permission('lineColor')">
+            <el-input readonly v-model="deviceInfo.lineColor"></el-input>
+          </el-form-item>
           <el-form-item label="流动速度" v-if="permission('playSpeed')">
-            <el-input readonly :value="deviceInfo.playSpeed" label="0-100,数值越大流动越快"></el-input>
+            <el-input
+              readonly
+              :value="deviceInfo.playSpeed"
+              label="0-100,数值越大流动越快"
+            ></el-input>
           </el-form-item>
           <el-form-item label="关联变量" v-if="permission('relatedName')">
             <el-input
@@ -424,7 +445,8 @@ export default {
 
         zeroColor: "",
         notZeroColor: "",
-        playSpeed: "", //跑马灯线条移动速度
+        // playSpeed: "", //跑马灯线条移动速度
+        lineColor: "", //跑马灯线条颜色
       },
       deviceForm: {
         custom0: 0,
@@ -475,7 +497,7 @@ export default {
         r21: [
           //显示屏
           "title",
-          "playSpeed",
+          "lineColor",
           "relatedName",
         ],
         r1: [
@@ -1003,6 +1025,8 @@ export default {
             // stationNo: "OG581LL0720072800318",
             deviceNo: item.businessId,
           }).then(({ code, data }) => {
+            // item.id === 21 && (item.value=10);
+            //     console.log(item.id === -21);
             if (code == "200" && typeof data === "object") {
               let { varListFields } = data;
               varListFields = JSON.parse(varListFields);

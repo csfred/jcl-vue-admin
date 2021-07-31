@@ -57,3 +57,18 @@ export const deleteBgDevImg = (data) => ajax.get('/deleteBgDevImg', data);
 
 // 图片上传
 export const uploadBinaryFile = (data) => ajax.uploadBinaryFile('/uploadBinaryFile', data);
+
+// 获取监控配置信息
+export const monitoringConfInfo = (data) => ajax.post('/monitoringConfInfo', data)
+
+// 获取站点加监控设备tree
+export const monitoringViewTree = (data) => ajax.post('/monitoringViewTree', data)
+
+// 获取摄像头设备列表
+export const getAllMonitorInfo = (data) => ajax.get('/getAllMonitorInfo', data)
+// 删除摄像头设备
+export const deleteMonitorInfo = (data) => ajax.get('/deleteMonitorInfo', data)
+// export const 接口名 = (参数对象) => ajax.get('/路由',参数对象);
+export const saveMonitorInfo = (data) => ajax.post(preurl+'/saveMonitorInfo', 'application/json;charset=utf-8',  data)
+// 编辑摄像头设备
+export const updateMonitorInfo = (data) => ajax.post(preurl+'/updateMonitorInfo', 'application/json;charset=utf-8',  data)

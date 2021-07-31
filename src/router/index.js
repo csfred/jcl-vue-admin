@@ -93,6 +93,40 @@ export const constantRoutes = [
     ]
   },
 
+  // 设备监控展示
+  {
+    path: '/monitoring',
+    component: Layout,
+    meta: { title: '设备监控信息' },
+    children: [
+      {
+        path: 'monitoringconf',
+        name: 'monitoringConf',
+        component: () => import('@/views/monitoring/monitoringConf/index'),
+        meta: { title: '监控基本配置' }
+      },
+      {
+        path: 'leCheng',
+        name: 'leCheng',
+        component: () => import('@/views/monitoring/monitoringConf/leCheng'),
+        meta: { title: '乐橙云配置' },
+        hidden: true
+      },
+      {
+        path: 'yingShi',
+        name: 'yingShi',
+        component: () => import('@/views/monitoring/monitoringConf/yingShi'),
+        meta: { title: '萤石云配置' },
+        hidden: true
+      },
+      {
+        path: 'monitoringview',
+        name: 'monitoringView',
+        component: () => import('@/views/monitoring/monitoringView/index'),
+        meta: { title: '监控视频画面' }
+      }
+    ]
+  },
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }

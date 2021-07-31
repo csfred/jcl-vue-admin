@@ -82,7 +82,6 @@
                 })
             },
             handleNodeClick(data) {
-              debugger
               if(data!= "" || data !=null){
                 this.deviceId=data.deviceId
                 this.channelId=data.channelId

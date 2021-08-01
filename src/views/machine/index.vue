@@ -97,7 +97,7 @@
               v-else-if="item.id === 20"
               @dblclick.stop.prevent="handleDeviceInfo(item)"
             ></div>
-            <!-- 流动跑马灯 -->
+            <!-- 流动管道 -->
             <div
               class="linePlayBox"
               :class="{ linePlay: item.value < 0 || item.value > 0 }"
@@ -445,8 +445,8 @@ export default {
 
         zeroColor: "",
         notZeroColor: "",
-        // playSpeed: "", //跑马灯线条移动速度
-        lineColor: "", //跑马灯线条颜色
+        // playSpeed: "", //管道线条移动速度
+        lineColor: "", //管道线条颜色
       },
       deviceForm: {
         custom0: 0,

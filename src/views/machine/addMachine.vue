@@ -157,7 +157,7 @@
                     v-else-if="item.id === 20"
                     @dblclick.stop.prevent="handleDeviceInfo(item)"
                   ></div>
-                  <!-- 流动跑马灯 -->
+                  <!-- 流动管道 -->
                   <div
                     class="linePlay linePlayBox"
                     v-else-if="item.id === 21"
@@ -471,8 +471,8 @@ export default {
         fieldVisible: true, //隐藏关联变量
         zeroColor: "",
         notZeroColor: "",
-        // playSpeed: "", //跑马灯线条移动速度
-        lineColor: "", //跑马灯线条颜色
+        // playSpeed: "", //管道线条移动速度
+        lineColor: "", //管道线条颜色
       },
       deviceForm: {
         custom0: 0,
@@ -876,7 +876,7 @@ export default {
         this.listData.push(
           { id: 0, devTypeName: "标题", imgSrc: Images[0] },
           { id: 20, devTypeName: "指示灯", imgSrc: null },
-          { id: 21, devTypeName: "跑马灯", imgSrc: null }
+          { id: 21, devTypeName: "管道", imgSrc: null }
         );
       });
     },

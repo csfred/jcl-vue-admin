@@ -33,6 +33,36 @@ export const constantRoutes = [
       }
     ]
   },
+  // 运维中心
+  {
+    path: '/patrol',
+    component: Layout,
+    redirect: '/order/index',
+    meta: { title: '运维中心' },
+    children: [
+      {
+        path: 'member',
+        name: 'patrol-member',
+        component: () => import('@/views/patrol/member/member'),
+        meta: { title: '巡检人员' },
+      },{
+        path: 'setup',
+        name: 'patrol-setup',
+        component: () => import('@/views/patrol/setup/setup'),
+        meta: { title: '巡检设置' },
+      },{
+        path: 'plan',
+        name: 'patrol-plan',
+        component: () => import('@/views/patrol/plan/plan'),
+        meta: { title: '巡检计划' }
+      },{
+        path: 'record',
+        name: 'patrol-record',
+        component: () => import('@/views/patrol/record/record'),
+        meta: { title: '巡检记录' }
+      },
+    ]
+  },  
   // 站点基本信息
   {
     path: '/station',

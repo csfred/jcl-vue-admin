@@ -19,7 +19,7 @@
     <div class="normalMain">
       <el-table :data="tableData" border style="width: 100%">
         <el-table-column fixed prop="stationNo" label="ID"> </el-table-column>
-        <el-table-column prop="stationName" label="站点"> </el-table-column>
+        <el-table-column prop="stationName" label="站点设备"> </el-table-column>
         <el-table-column fixed="right" label="操作" min-width="100">
           <template slot-scope="scope">
             <el-button type="primary" @click="showDialog('edit', scope.row)"
@@ -59,7 +59,13 @@
           <el-input v-model="ruleForm.stationNo"></el-input>
         </el-form-item>
         <el-form-item label="备注" prop="stationName">
-          <el-input v-model="ruleForm.stationName"></el-input>
+          <el-input
+            type="textarea"
+            :rows="5"
+            placeholder="请输入备注"
+            v-model="ruleForm.stationName"
+          >
+          </el-input>
         </el-form-item>
         <div class="btnBox">
           <el-button @click="resetForm('ruleForm')">取消</el-button>
@@ -78,7 +84,7 @@
       <div class="normalTop">
         <div class="search-box">
           <div class="inp-box">
-            <el-select v-model="station" placeholder="请选择">
+            <el-select v-model="station" placeholder="请选择站点">
               <el-option
                 v-for="item in stationArr"
                 :key="item.value"
@@ -89,7 +95,7 @@
             </el-select>
           </div>
           <div class="inp-box">
-            <el-select v-model="device" placeholder="请选择">
+            <el-select v-model="device" placeholder="请选择设备类型">
               <el-option
                 v-for="item in deviceArr"
                 :key="item.value"
@@ -103,11 +109,30 @@
         </div>
       </div>
       <div class="normalMain">
-        <el-table :data="pointTableData" border>
+        <el-table :data="deviceTableData" border>
           <el-table-column type="selection" width="55"> </el-table-column>
-          <el-table-column fixed prop="stationNo" label="点位名称"> </el-table-column>
-          <el-table-column prop="stationName" label="位置"> </el-table-column>
-          <el-table-column prop="stationName" label="所选区域"> </el-table-column>
+          <el-table-column prop="stationNo" label="设备名"> </el-table-column>
+          <el-table-column prop="stationName" label="位置">
+            <template slot-scope="scope">
+              <el-input
+                type="textarea"
+                :rows="2"
+                placeholder="请输入位置说明"
+                v-model="scope.row.abc"
+              >
+              </el-input>
+            </template>
+          </el-table-column>
+          <el-table-column prop="stationName" label="操作规范"
+            ><template slot-scope="scope">
+              <el-input
+                type="textarea"
+                :rows="2"
+                placeholder="请输入操作规范"
+                v-model="scope.row.abc"
+              >
+              </el-input> </template
+          ></el-table-column>
         </el-table>
         <div class="normalPage">
           <el-pagination
@@ -134,7 +159,7 @@ export default {
     return {
       stationNameVal: "",
       tableData: [{}],
-      pointTableData: [],
+      deviceTableData: [{}],
       totalCount: 0,
       dialogVisible: false,
       pointDialogVisible: false,

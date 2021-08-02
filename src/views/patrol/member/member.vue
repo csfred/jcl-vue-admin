@@ -48,10 +48,10 @@
         </el-pagination>
       </div>
     </div>
-    <!-- 线路模态框 -->
+    <!-- 用户模态框 -->
     <el-dialog
       class="doubleFormDialog normalDialog"
-      :title="isEdit ? '编辑线路' : '新增线路'"
+      :title="isEdit ? '编辑用户' : '新增用户'"
       :visible.sync="dialogVisible"
       width="45%"
     >

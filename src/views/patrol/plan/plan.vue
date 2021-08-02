@@ -20,6 +20,17 @@
             </el-option>
           </el-select>
         </div>
+        <div class="inp-box">
+          <el-select v-model="member" placeholder="请选择计划类型">
+            <el-option
+              v-for="item in memberArr"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select>
+        </div>
         <el-button class="searchBtn" @click="searchFn()" type="primary">查询</el-button>
       </div>
       <div class="controlBtnBox">
@@ -110,7 +121,7 @@
         <el-form-item label="开始时间" prop="stationName">
           <el-date-picker
             v-model="ruleForm.stationName"
-            type="date"
+            type="datetime"
             placeholder="选择日期"
           >
           </el-date-picker>

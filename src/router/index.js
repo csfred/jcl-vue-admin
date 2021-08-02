@@ -100,11 +100,6 @@ export const constantRoutes = [
     meta: { title: '运维中心' },
     children: [
       {
-        path: 'member',
-        name: 'patrol-member',
-        component: () => import('@/views/patrol/member/member'),
-        meta: { title: '巡检人员' },
-      },{
         path: 'setup',
         name: 'patrol-setup',
         component: () => import('@/views/patrol/setup/setup'),
@@ -156,7 +151,21 @@ export const constantRoutes = [
       }
     ]
   },
-
+  // 系统管理
+  {
+    path: '/sys',
+    component: Layout,
+    redirect: '/order/index',
+    meta: { title: '系统管理' },
+    children: [
+      {
+        path: 'member',
+        name: 'patrol-member',
+        component: () => import('@/views/sys/member/member'),
+        meta: { title: '账号管理' },
+      }
+    ]
+  }, 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]

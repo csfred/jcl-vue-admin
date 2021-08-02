@@ -39,7 +39,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/order/index',
     // name: 'site',
-    meta: { title: '站点基本数据' },
+    meta: { title: '站点信息' },
     children: [
       {
         path: 'index',
@@ -66,11 +66,11 @@ export const constantRoutes = [
       }
     ]
   },  
-  // 设备基本信息
+  // 设备信息
   {
     path: '/machine',
     component: Layout,
-    meta: { title: '站点设备信息' },
+    meta: { title: '设备信息' },
     children: [
       {
         path: 'index',
@@ -92,36 +92,26 @@ export const constantRoutes = [
       }          
     ]
   },
-  // 运维中心
+  // 水质信息
   {
-    path: '/patrol',
+    path: '/water',
     component: Layout,
     redirect: '/order/index',
-    meta: { title: '运维中心' },
+    meta: { title: '水质信息' },
     children: [
       {
-        path: 'setup',
-        name: 'patrol-setup',
-        component: () => import('@/views/patrol/setup/setup'),
-        meta: { title: '巡检设置' },
-      },{
-        path: 'plan',
-        name: 'patrol-plan',
-        component: () => import('@/views/patrol/plan/plan'),
-        meta: { title: '巡检计划' }
-      },{
-        path: 'record',
-        name: 'patrol-record',
-        component: () => import('@/views/patrol/record/record'),
-        meta: { title: '巡检记录' }
+        path: 'member',
+        name: 'water-msg',
+        component: () => import('@/views/sys/member/member'),
+        meta: { title: '水质信息' },
       },
     ]
   }, 
-  // 设备监控展示
+  // 监控信息
   {
     path: '/monitoring',
     component: Layout,
-    meta: { title: '设备监控信息' },
+    meta: { title: '监控信息' },
     children: [
       {
         path: 'monitoringconf',
@@ -151,6 +141,73 @@ export const constantRoutes = [
       }
     ]
   },
+  // 巡检管理
+  {
+    path: '/patrol',
+    component: Layout,
+    redirect: '/order/index',
+    meta: { title: '巡检管理' },
+    children: [
+      {
+        path: 'setup',
+        name: 'patrol-setup',
+        component: () => import('@/views/patrol/setup/setup'),
+        meta: { title: '巡检设置' },
+      },{
+        path: 'plan',
+        name: 'patrol-plan',
+        component: () => import('@/views/patrol/plan/plan'),
+        meta: { title: '巡检计划' }
+      },{
+        path: 'record',
+        name: 'patrol-record',
+        component: () => import('@/views/patrol/record/record'),
+        meta: { title: '巡检记录' }
+      },
+    ]
+  }, 
+  // 预警管理
+  {
+    path: '/warning',
+    component: Layout,
+    redirect: '/order/index',
+    meta: { title: '预警管理' },
+    children: [
+      {
+        path: 'member',
+        name: 'warning-setup',
+        component: () => import('@/views/sys/member/member'),
+        meta: { title: '预警设置' },
+      },
+      {
+        path: 'member',
+        name: 'warning-msg',
+        component: () => import('@/views/sys/member/member'),
+        meta: { title: '预警消息' },
+      },
+      {
+        path: 'member',
+        name: 'warning-report',
+        component: () => import('@/views/sys/member/member'),
+        meta: { title: '预警报表' },
+      }
+    ]
+  }, 
+  // 报表中心
+  {
+    path: '/report',
+    component: Layout,
+    redirect: '/order/index',
+    meta: { title: '报表中心' },
+    children: [
+      {
+        path: 'report',
+        name: 'patrol-report',
+        component: () => import('@/views/sys/member/member'),
+        meta: { title: '报表中心' },
+      },
+    ]
+  }, 
   // 系统管理
   {
     path: '/sys',

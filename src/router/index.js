@@ -100,7 +100,7 @@ export const constantRoutes = [
     meta: { title: '水质信息' },
     children: [
       {
-        path: 'member',
+        path: 'water',
         name: 'water-msg',
         component: () => import('@/views/sys/member/member'),
         meta: { title: '水质信息' },
@@ -174,19 +174,19 @@ export const constantRoutes = [
     meta: { title: '预警管理' },
     children: [
       {
-        path: 'member',
+        path: 'warning1',
         name: 'warning-setup',
         component: () => import('@/views/sys/member/member'),
         meta: { title: '预警设置' },
       },
       {
-        path: 'member',
+        path: 'warning2',
         name: 'warning-msg',
         component: () => import('@/views/sys/member/member'),
         meta: { title: '预警消息' },
       },
       {
-        path: 'member',
+        path: 'warning3',
         name: 'warning-report',
         component: () => import('@/views/sys/member/member'),
         meta: { title: '预警报表' },
@@ -216,7 +216,7 @@ export const constantRoutes = [
     meta: { title: '系统管理' },
     children: [
       {
-        path: 'member',
+        path: 'sys',
         name: 'patrol-member',
         component: () => import('@/views/sys/member/member'),
         meta: { title: '账号管理' },

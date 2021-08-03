@@ -129,7 +129,6 @@
         <el-form-item label="周期执行频率" prop="stationNo">
           <el-input-number
             v-model="ruleForm.stationName"
-            @change="handleChange"
             :min="0"
           ></el-input-number>
         </el-form-item>
@@ -169,6 +168,7 @@ export default {
         stationNo: "",
         remarks3: "",
       },
+      role:"",
       roleArr: [],
       ruleForm: {
         stationNo: "",

@@ -1,5 +1,5 @@
 <template>
-  <div class="site-editor-container">
+  <div class="pageView">
     <div class="normalTop">
       <div class="search-box">
         <div class="inp-box">

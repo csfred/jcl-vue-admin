@@ -130,10 +130,10 @@ div:focus {
 
     .inp-box {
       float: left;
+      margin-right: 20px;
 
       .el-input {
         width: 200px;
-        margin-right: 20px;
       }
     }
   }
@@ -178,12 +178,12 @@ div:focus {
 }
 
 //弹窗剧中
-.el-dialog{
+.el-dialog {
   margin-top: 0 !important;
   margin-left: 0;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
 //默认弹窗样式
 .normalDialog {
@@ -191,14 +191,25 @@ div:focus {
     width: 100%;
     overflow-x: hidden;
 
-    .el-select,.el-input-number,.el-date-editor{
+    .el-select,
+    .el-input-number,
+    .el-date-editor {
       width: 100%;
     }
   }
-  
+
   .btnBox {
     width: 100%;
     float: right;
     text-align: right;
   }
+}
+
+//全局公共页面主体内容样式
+.pageView {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
 }

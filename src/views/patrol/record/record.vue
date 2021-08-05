@@ -50,7 +50,6 @@
             <el-table-column prop="stationName" label="巡检点位"> </el-table-column>
             <el-table-column prop="stationName" label="计划开始时间"> </el-table-column>
             <el-table-column prop="stationName" label="计划结束时间"> </el-table-column>
-            <el-table-column prop="stationName" label="状态"> </el-table-column>
             <el-table-column prop="stationName" label="巡检情况"> </el-table-column>
             <el-table-column width="230" fixed="right" label="操作">
               <template slot-scope="scope">
@@ -74,6 +73,7 @@
         <el-tab-pane label="实时计划巡检汇总" name="second">
           <el-table :data="tableData" border style="width: 100%">
             <el-table-column prop="stationNo" label="计划名称"> </el-table-column>
+            <el-table-column prop="stationName" label="巡检线路"> </el-table-column>
             <el-table-column prop="stationName" label="计划开始时间"> </el-table-column>
             <el-table-column prop="stationName" label="计划结束时间"> </el-table-column>
             <el-table-column prop="stationName" label="状态"> </el-table-column>
@@ -110,6 +110,7 @@
           <el-table-column prop="stationNo" label="巡检时间"> </el-table-column>
           <el-table-column prop="stationNo" label="巡检点位"> </el-table-column>
           <el-table-column prop="stationName" label="巡检情况"></el-table-column>
+            <el-table-column prop="stationName" label="状态"> </el-table-column>
           <el-table-column label="操作">
             <template slot-scope="scope">
               <el-button type="primary">查看文件存档</el-button>

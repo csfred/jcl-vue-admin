@@ -69,6 +69,6 @@ export const getAllMonitorInfo = (data) => ajax.get('/getAllMonitorInfo', data)
 // 删除摄像头设备
 export const deleteMonitorInfo = (data) => ajax.get('/deleteMonitorInfo', data)
 // export const 接口名 = (参数对象) => ajax.get('/路由',参数对象);
-export const saveMonitorInfo = (data) => ajax.post(preurl+'/saveMonitorInfo', 'application/json;charset=utf-8',  data)
+export const saveMonitorInfo = (data) => ajax.post(preurl+'/saveMonitorInfo',  data)
 // 编辑摄像头设备
-export const updateMonitorInfo = (data) => ajax.post(preurl+'/updateMonitorInfo', 'application/json;charset=utf-8',  data)
+export const updateMonitorInfo = (data) => ajax.post(preurl+'/updateMonitorInfo',  data)

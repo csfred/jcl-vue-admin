@@ -83,13 +83,7 @@ export const constantRoutes = [
         name: 'machine-menu2',
         component: () => import('@/views/machine/addMachine'),
         meta: { title: '设备添加' },
-      },
-      {
-        path: 'editMachine',
-        name: 'machine-menu3',
-        component: () => import('@/views/machine/editMachine'),
-        meta: { title: '设备编辑' },
-      }          
+      }        
     ]
   },
   // 水质信息
@@ -176,7 +170,7 @@ export const constantRoutes = [
       {
         path: 'warning1',
         name: 'warning-setup',
-        component: () => import('@/views/sys/member/member'),
+        component: () => import('@/views/warning/setup/setup'),
         meta: { title: '预警设置' },
       },
       {

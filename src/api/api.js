@@ -7,3 +7,19 @@ export const getOpenapiData = (url, params) => { return axios.post(`${base}/${ur
 
 export const postApiData = (url, params) => { return axios.post(`${baseApi}/${url}`, qs.stringify(params)); };
 
+
+//萤石
+export const getAccessToken = (data) => {
+    return axios.post(`${baseApi}/lapp/token/get`,
+        qs.stringify(data),
+        {
+            headers: { "Content-Type": "application/x-www-form-urlencoded" }
+        })
+};
+export const getLiveAddress = (data) => {
+    return axios.post(`${baseApi}/lapp/v2/live/address/get`,
+        qs.stringify(data),
+        {
+            headers: { "Content-Type": "application/x-www-form-urlencoded" }
+        })
+};

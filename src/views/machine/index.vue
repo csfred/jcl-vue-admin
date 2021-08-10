@@ -45,7 +45,7 @@
         </p>
       </div>
       <el-button type="primary" class="exitBtn" v-if="full" @click="full = false"
-        >退迟全屏</el-button
+        >退出全屏</el-button
       >
       <div class="dragBox" :style="{ transform: `scale(${scale})` }">
         <template v-for="item in deviceDataArr">
